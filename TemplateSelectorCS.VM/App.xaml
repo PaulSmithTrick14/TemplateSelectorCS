@@ -1,0 +1,16 @@
+﻿<Application x:Class="TemplateSelectorCS.VM.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TemplateSelectorCS.VM"
+             xmlns:panes="clr-namespace:TemplateSelectorCS.VM.Panes"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate x:Key="GatherTemplate">
+            <panes:InputControl />
+        </DataTemplate>
+        <DataTemplate x:Key="ReportTemplate">
+            <panes:ReportViewer />
+        </DataTemplate>
+        <local:PaneTypeDataSelector x:Key="paneSelector" />
+    </Application.Resources>
+</Application>
