@@ -1,4 +1,4 @@
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace TemplateSelectorCS.Model
 {
@@ -23,8 +23,11 @@ namespace TemplateSelectorCS.Model
             {
                 _specific = value;
                 RaisePropertyChangedEvent(nameof(Specific));
+                RaisePropertyChangedEvent(nameof(BackingModelName));
             }
         }
+
+        public string BackingModelName => Specific.GetType().Name;
 
         public ICommand ShowReport
         {
