@@ -11,7 +11,7 @@ namespace TemplateSelectorCS.Model
             set
             {
                 _valid = value;
-                RaisePropertyChangedEvent("Valid");
+                RaisePropertyChangedEvent(nameof(Valid));
             }
         }
 
@@ -22,9 +22,12 @@ namespace TemplateSelectorCS.Model
             set
             {
                 _specific = value;
-                RaisePropertyChangedEvent("Specific");
+                RaisePropertyChangedEvent(nameof(Specific));
+                RaisePropertyChangedEvent(nameof(BackingModelName));
             }
         }
+
+        public string BackingModelName => Specific.GetType().Name;
 
         public ICommand ShowReport
         {

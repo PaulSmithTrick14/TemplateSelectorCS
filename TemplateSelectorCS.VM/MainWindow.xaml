@@ -5,6 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="MyContentPresenterStyle" TargetType="ContentPresenter">
+            <Setter Property="ContentTemplate" Value="{StaticResource GatherTemplate}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding BackingModelName}" Value="Gather">
+                    <Setter Property="ContentTemplate" Value="{StaticResource GatherTemplate}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding BackingModelName}" Value="Report">
+                    <Setter Property="ContentTemplate" Value="{StaticResource ReportTemplate}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding ShowGather}">Gather Input</Button>
@@ -12,9 +25,8 @@
             <Button Command="{Binding ToggleValid}">Toggle Flag</Button>
         </StackPanel>
         <ContentControl>
-            <ContentPresenter
-        Content="{Binding Specific}"
-        ContentTemplateSelector="{StaticResource paneSelector}" />
+            <ContentPresenter Content="{Binding}"
+                              Style="{StaticResource MyContentPresenterStyle}"/>
         </ContentControl>
         <TextBlock>
             <Run>The global Valid flag is currently </Run>
